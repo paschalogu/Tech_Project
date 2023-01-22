@@ -1,0 +1,68 @@
+---
+- name: Configure t2.micro RDS instances in London region
+  hosts: localhost
+  connection: local
+  vars:
+    region: eu-west-2
+    keypair: paschal_task
+    subnet_id: subnet-0391b2d258f546276
+    db_identifier_1: my-db-1
+    db_name_1: mydb_1
+    db_username_1: mydbuser_1
+    db_password_1: mydbpassword_1
+    db_identifier_2: my-db-2
+    db_name_2: mydb_2
+    db_username_2: mydbuser_2
+    db_password_2: mydbpassword_2
+    db_instance_class: db.t2.micro
+    allocated_storage: 20
+    storage_type: gp2
+    group_id: sg-085fe5b1cccc94c62
+    storage_encrypted: true
+    backup_retention_period: 7
+    publicly_accessible: true
+    
+  tasks:
+#- name: Launch RDS instance two
+#  community.aws.rds_instance:
+#    region: "{{ region }}"
+#    db_instance_identifier: "{{ db_identifier_2 }}"
+#    db_name: "{{ db_name_2 }}"
+#    db_engine: "postgres"
+#    db_username: "{{ db_username_2 }}"
+#    db_password: "{{ db_password_2 }}"
+#    db_instance_class: "{{ db_instance_class }}"
+#   allocated_storage: "{{ allocated_storage }}"
+#    storage_type: "{{ storage_type }}"
+#    storage_encrypted: "{{ storage_encrypted }}"
+#    backup_retention_period: "{{ backup_retention_period }}"
+#    publicly_accessible: "{{ publicly_accessible }}"
+#    wait: ye
+
+  - name: Launch t2.micro web servers
+    ec2_instance:
+      region: "{{ region }}"
+      key_name: "{{ keypair }}"
+      instance_type: t2.micro
+      image_id: ami-0db5812a1388c1870
+      count: 3
+      wait: yes
+    
+
+  - name: Launch RDS instance one
+    amazon.aws.rds_instance:
+      region: "{{ region }}"
+      db_instance_identifier: "{{ db_identifier_1 }}"
+      db_name: "{{ db_name_1 }}"
+      engine: "mariadb"
+      username: "{{ db_username_1 }}"
+      password: "{{ db_password_1 }}"
+      db_instance_class: "{{ db_instance_class }}"
+      allocated_storage: "{{ allocated_storage }}"
+      storage_type: "{{ storage_type }}"
+#      storage_encrypted: "{{ storage_encrypted }}"
+      backup_retention_period: "{{ backup_retention_period }}"
+      publicly_accessible: "{{ publicly_accessible }}"
+      skip_final_snapshot: true
+      wait: yes
+

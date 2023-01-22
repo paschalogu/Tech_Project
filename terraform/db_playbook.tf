@@ -8,7 +8,7 @@ resource "aws_db_instance" "cloudboosta_db" {
   db_name           = "cloudboosta_name"
   username          = "admin"
   password          = "password"
-#  skip_final_snapshot = true
+  skip_final_snapshot = true
 
  vpc_security_group_ids = [aws_security_group.candidate1_sg.id]
 

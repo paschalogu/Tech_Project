@@ -1,0 +1,21 @@
+---
+- name: Configure t2.micro RDS instances in London region
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: Terminate EC2 instance
+    ec2_instance:
+      state: absent
+      region: eu-west-2
+      instance_ids:
+      - i-05e0722638ce8d851
+      - i-0b783f0e9599ad1ec
+      - i-0c300a5fbb4fbaf86
+
+
+  - name: Terminate EC2 instance
+    amazon.aws.rds_instance:
+        state: absent
+        region: eu-west-2
+        skip_final_snapshot: true
+        db_instance_identifier: my-db-1 
