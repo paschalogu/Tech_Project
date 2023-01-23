@@ -9,7 +9,7 @@ pipeline {
       stages {
         stage('test') {
             steps {
-                echo "Testes and Trsusted!"
+                echo "Testes and Trusted!"
             }
         }
     }
