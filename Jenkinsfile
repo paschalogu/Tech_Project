@@ -11,5 +11,10 @@ pipeline {
                 echo "Testes and Trusted!"
             }
         }
+        stage('build') {
+            steps {
+                sh 'apt update'
+            }
+        }
     }
 }
