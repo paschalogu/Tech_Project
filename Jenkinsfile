@@ -16,5 +16,10 @@ pipeline {
                 echo "THis is it Testes and Trusted! hhh"
             }
         }
+        stage('Final update') {
+            steps {
+                sh "usr/bin/apt-get update"
+            }
+        }
     }
 }
