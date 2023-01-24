@@ -11,5 +11,10 @@ pipeline {
                 echo "Testes and Trusted! hhh"
             }
         }
+        stage('Final') {
+            steps {
+                echo "THis is it Testes and Trusted! hhh"
+            }
+        }
     }
 }
