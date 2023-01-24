@@ -11,7 +11,7 @@ pipeline {
                 echo "Testes and Trusted!"
             }
         }
-        stage('build') {
+        stage('build us') {
             steps {
                 sh 'apt update'
             }
