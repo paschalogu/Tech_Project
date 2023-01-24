@@ -8,7 +8,7 @@ pipeline {
         }   
         stage('test') {
             steps {
-                echo "Testes and Trusted!"
+                echo "Testes and Trusted! hhh"
             }
         }
     }
