@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Final update') {
             steps {
-                sh "usr/bin/apt-get update"
+                sh "usr/bin/apt update"
             }
         }
     }
