@@ -1,25 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Build Stage') {
             steps {
-                echo "Hello World!"
+                echo "This is the first stage!"
             }
         }   
-        stage('test') {
+        stage('Test Stage') {
             steps {
-                echo "Testes and Trusted! hhh"
+                echo "Tests and Trusted "
             }
         }
-        stage('Final') {
+        stage('Final Stage') {
             steps {
                 echo "THis is it Testes and Trusted! hhh"
             }
         }
-        stage('Final update') {
-            steps {
-                sh "usr/bin/apt update"
-            }
-        }
+        
     }
 }
