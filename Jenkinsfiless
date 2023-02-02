@@ -1,7 +1,7 @@
-// Environment Variables.
-// env.access_key = AWS_ACCESS_KEY_ID
-// env.secret_key = AWS_SECRET_ACCESS_KEY
-// env.region = AWS_REGION
+Environment Variables.
+env.access_key = AWS_ACCESS_KEY_ID
+env.secret_key = AWS_SECRET_ACCESS_KEY
+env.region = AWS_REGION
 
 pipeline {
     agent any
